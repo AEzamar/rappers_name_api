@@ -1,11 +1,11 @@
-const express = require('express');
-const app = express();
-const cors = require('cors');
-const PORT = 8000;
+const express = require('express')
+const app = express()
+const cors = require('cors')
+const PORT = 8000
 
-app.use(cors());
+app.use(cors())
 
-const rappers =  {
+let rappers =  {
     '21 savage': {
         'age': 29,
         'birthName': 'Seyaah',
@@ -24,18 +24,18 @@ const rappers =  {
 }
 
 app.get('/', (req, res) => {
-    res.sendFile(__dirname + '/index.html');
+    res.sendFile(__dirname + '/index.html')
 })
 
 app.get('/api/:name', (req, res) => {
-    const rappersName = req.params.name.toLowerCase();
+    const rappersName = req.params.name.toLowerCase()
     if(rappers[rappersName]) {
-        res.json(rappers[rappersName]);
+        res.json(rappers[rappersName])
     }else {
-        res.json(rappers['unknown']);
+        res.json(rappers['unknown'])
     }
 })
 
 app.listen(process.env.PORT || PORT, () => {
-    console.log(`Listening on port number ${PORT}`);
+    console.log(`Server running on port ${PORT}`);
 }) 
